@@ -1,0 +1,89 @@
+%%
+%% Copyright (C) 2020 by Thomas Saigre
+%%
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either
+%% version 1.3 of this license or (at your option) any later
+%% version.  The latest version of this license is in:
+%%
+%%    http://www.latex-project.org/lppl.txt
+%%
+%% and version 1.3 or later is part of all distributions of
+%% LaTeX version 2005/12/01 or later.
+%%
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{framecitation}[2020/09/01 Frame Citation Package]
+
+\RequirePackage{tikz}
+\RequirePackage{biblatex}
+\RequirePackage{graphicx}
+
+\newcommand{\side}{right}
+\newcommand{\yoffset}{0}
+\newcommand{\xoffset}{0}
+
+
+%% Align the bib lignes
+\DeclareOption{left}{\renewcommand{\side}{left}}
+\DeclareOption{right}{\renewcommand{\side}{right}}
+
+
+%% Set vertical offset
+\DeclareOption{bar}{\renewcommand{\yoffset}{10}}
+\DeclareOption{compress}{\renewcommand{\yoffset}{15}}
+%% you can personalize your own size, depending on the beamer theme you're using
+%\DeclareOption{persoOffset}{\renewcommand{\yoffset}{value}}
+
+%% Set horizontal offset
+\DeclareOption{normal}{\renewcommand{\xoffset}{0}}
+\DeclareOption{long}{\renewcommand{\xoffset}{50}}
+\DeclareOption{Long}{\renewcommand{\xoffset}{75}}
+\DeclareOption{LONG}{\renewcommand{\xoffset}{100}}
+
+
+
+
+%% Write the citation in white
+\newif\if@writeinwhite\@writeinwhitefalse
+\DeclareOption{white}{
+	\@writeinwhitetrue
+}
+
+
+
+
+\ProcessOptions\relax
+
+
+
+\newcommand{\tiniest}[2][0.5]{\scalebox{#1}{#2}}
+
+
+\newcommand{\setxnormal}{\renewcommand{\xoffset}{0}}
+\newcommand{\setxlong}{\renewcommand{\xoffset}{50}}
+\newcommand{\setxLong}{\renewcommand{\xoffset}{75}}
+\newcommand{\setxLONG}{\renewcommand{\xoffset}{100}}
+\newcommand{\setxLONGEST}{\renewcommand{\xoffset}{\textwidth/2}}
+\newcommand{\setx}[1]{\renewcommand{\xoffset}{#1}}
+
+
+\newcounter{entries}[framenumber]
+
+\newcommand{\citeonframe}[1]{%
+	\stepcounter{entries}%
+	[\theentries]%
+	\begin{tikzpicture}[remember picture, overlay]
+	\node[\side,xshift=-\xoffset,yshift=-\yoffset-\theentries*5.5] at (current page.north) {%
+		\if@writeinwhite\textcolor{white}{\tiniest{[\theentries]\,\fullcite{#1}}}
+		\else\tiniest{[\theentries]\,\fullcite{#1}}
+		\fi
+		
+	} ;
+	\end{tikzpicture}%
+}
+
+
+
+\endinput

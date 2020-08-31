@@ -1,0 +1,27 @@
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+
+\usepackage[bar]{framecitation}
+\addbibresource{bib-example.bib}
+
+
+\begin{document}
+
+\begin{frame}
+\frametitle{First frame}
+
+Hello world \citeonframe{entry1}.\\
+Blabla blablabla blabla bla \citeonframe{entry2}.
+
+\end{frame}
+
+
+\begin{frame}
+\setx{130}
+\frametitle{Second frame}
+
+Another citation \citeonframe{entry3}.\\
+
+\end{frame}
+
+\end{document}
