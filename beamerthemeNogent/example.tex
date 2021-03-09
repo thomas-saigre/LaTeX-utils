@@ -1,0 +1,53 @@
+\documentclass{beamer}
+\usetheme{Nogent}
+
+\author{thomas-saigre}
+\title{Example theme Nogent}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\section{Section 1}
+
+\subsection{subsection 1.1}
+
+\begin{frame}{Slide 1}
+    \ajouterdansheadline{\hyperlink{label}{$\rightarrow$}}
+    \begin{block}{Example of block}
+        Some text in the block
+    \end{block}
+
+    \begin{alertblock}{Example of alert block}
+        Some text in the block
+    \end{alertblock}
+
+    \begin{exampleblock}{Example of example block}
+        Some text in the block
+    \end{exampleblock}
+
+\end{frame}
+
+\subsection{subsection 1.2}
+
+\begin{frame}{Slide 2}
+    \lipsum[2]
+\end{frame}
+
+\section{Section 2}
+
+\subsection{subsection 2.1}
+
+\begin{frame}{Slide 3}
+    \label{label}
+    \lipsum[3]
+\end{frame}
+
+\subsection{subsection 3.2}
+
+\begin{frame}{Slide 4}
+    \lipsum[4]
+\end{frame}
+
+
+\end{document}

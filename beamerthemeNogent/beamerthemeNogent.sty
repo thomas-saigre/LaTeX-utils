@@ -1,0 +1,77 @@
+% v1.1.0 Copyright 2018 by Thomas Saigre
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+% \DeclareOptionBeamer{sub}{\beamer@notsubtrue}
+\ProcessOptionsBeamer
+
+
+
+
+\newcommand{\trucajoute}{}
+\newcommand{\ajouterdansheadline}[1]{
+   \global\def\trucajoute{
+      #1\:
+      \global\let\trucajoute\empty}
+}
+
+
+
+\mode<presentation>
+
+\useoutertheme{split}
+\usecolortheme{hippo}
+
+
+\setbeamerfont{block title}{size={}}
+\setbeamercolor{titlelike}{parent=structure}
+
+\defbeamertemplate*{headline}{}{%
+    \begin{beamercolorbox}[ht=2.125ex,dp=0.75ex]{section in head/foot}
+        \insertsectionnavigationhorizontal{\paperwidth}{}{}% %\paperwidth dans le premier pour que ce soit sur toute la page
+    \end{beamercolorbox}%
+
+   % \ifx\beamer@notsubtrue
+    \begin{beamercolorbox}[ht=2.125ex,dp=0.75ex]{subsection in head/foot}
+       \usebeamerfont{subsection in head/foot}
+       \insertsubsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll\trucajoute}
+    \end{beamercolorbox}%
+    %\fi
+}
+
+
+\defbeamertemplate*{footline}{infolines theme}
+{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor\expandafter\ifblank\expandafter{\beamer@shortinstitute}{}{~~(\insertshortinstitute)}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    %\usebeamertemplate{page number in head/foot}\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+
+\setbeamercolor{block body alerted}{bg=alerted text.fg!10}
+\setbeamercolor{block title alerted}{bg=alerted text.fg!20}
+\setbeamercolor{block body}{bg=structure!10}
+\setbeamercolor{block title}{bg=structure!20}
+\setbeamercolor{block body example}{bg=green!10}
+\setbeamercolor{block title example}{bg=green!20}
+
+\mode
+<all>
