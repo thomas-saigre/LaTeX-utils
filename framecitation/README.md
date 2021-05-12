@@ -1,5 +1,7 @@
 # Frame Citation package
 
+**NOTE : this package is not working well yet... maybe it will be improved in the future...**
+
 Add citations to the current frame, on the top right corner of the page.
 In the premable of the TeX file write :
 

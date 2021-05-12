@@ -22,7 +22,7 @@ To change the main color of the theme (the default one is blue)
 
 ## `\ajouterdansheadline`
 
-The function `\ajouterdansheadline` allow to add some text or link in the right part of the head line (on the example above, it is a right arrow) :
+The function `\ajouterdansheadline` allows to add some text or link in the right part of the head line (on the example above, it is a right arrow) :
 
     \ajouterdansheadline{\hyperlink{label}{$\rightarrow$}}
 
