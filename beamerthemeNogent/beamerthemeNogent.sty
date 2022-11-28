@@ -65,6 +65,23 @@
   \vskip0pt%
 }
 
+\def\insertSectionToc#1{%
+  \begin{frame}
+    \frametitle{\insertsection}
+    \begin{multicols}{#1}
+        \tableofcontents[currentsection]
+    \end{multicols}
+    \insertsection
+  \end{frame}
+}
+
+\def\TitleSec{%
+  \begin{frame}[c]
+    \centering
+    \LARGE\bf\insertsection
+  \end{frame}  
+}
+
 
 \setbeamercolor{block body alerted}{bg=alerted text.fg!10}
 \setbeamercolor{block title alerted}{bg=alerted text.fg!20}

@@ -22,9 +22,25 @@ To change the main color of the theme (the default one is blue)
 
 ## `\ajouterdansheadline`
 
-The function `\ajouterdansheadline` allows to add some text or link in the right part of the head line (on the example above, it is a right arrow) :
+The macro `\ajouterdansheadline` allows to add some text or link in the right part of the head line (on the example above, it is a right arrow) :
 
     \ajouterdansheadline{\hyperlink{label}{$\rightarrow$}}
+
+
+## `\insertSectionToc`
+
+The macro `\insertSectionToc` add a single frame with current section table of content, with a number of columns to display it :
+
+    \insertSectionToc{<N>}
+
+where `<N>` is the number of columns we want the table of content to be displayed.
+
+
+## `\TitleSec`
+
+The macro `\TitleSec` add a single frame containing only the title of the current section.
+
+    \TitleSec
 
 ## Get the files
 
